@@ -1,10 +1,6 @@
 package com.SkyIsland.ActualArchery;
 
-import java.io.File;
-
 import org.bukkit.plugin.java.JavaPlugin;
-
-import com.SkyIsland.ActualArchery.config.PluginConfig;
 
 public class ActualArcheryPlugin extends JavaPlugin {
 	
