@@ -12,6 +12,8 @@ import org.bukkit.metadata.FixedMetadataValue;
 
 import com.SkyIsland.ActualArchery.ActualArcheryPlugin;
 import com.SkyIsland.ActualArchery.bows.BowType;
+import com.SkyIsland.ActualArchery.bows.CustomBow;
+import com.SkyIsland.ActualArchery.config.PluginConfig;
 
 public class BowListener implements Listener {
 	
@@ -52,8 +54,14 @@ public class BowListener implements Listener {
 			return;
 		}
 		
+		if (!PluginConfig.getConfig().isEnabled(type)) {
+			return;
+		}
+		
 		e.getProjectile().setMetadata(ArrowListener.metaKey, new FixedMetadataValue
 				(ActualArcheryPlugin.plugin, type.name()));
+		
+		CustomBow.getArrow(type).onFire(e.getEntity().getLocation(), e.getEntity());
 		
 	}
 }

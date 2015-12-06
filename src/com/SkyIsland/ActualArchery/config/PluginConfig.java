@@ -40,11 +40,23 @@ public class PluginConfig {
 		writer.println("# of the colon!) Possible values will follow the description.");
 		writer.println("###############################");
 		writer.println();
+		writer.println();
+		writer.println();
 		writer.println("# How frequently should the plugin print messages?");
 		writer.println("Values: 0 | 1 | 2 | 3 | NONE | LOW | HIGH | ALL");
 		writer.println("msglvl: ALL");
 		writer.println();
+		writer.println();
+		writer.println();
 		writer.println("# Is this arrow allowed? (Values: true | false)");
+		writer.println("enabled:");
+		for (BowType type : BowType.values()) {
+			writer.println(tab + type.name() + ": true");
+		}
+		writer.println();
+		writer.println();
+		writer.println();
+		writer.println("# Is this arrow craftable? (Values: true | false)");
 		writer.println("enabled:");
 		for (BowType type : BowType.values()) {
 			writer.println(tab + type.name() + ": true");

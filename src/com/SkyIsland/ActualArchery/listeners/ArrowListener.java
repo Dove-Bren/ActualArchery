@@ -36,12 +36,9 @@ public class ArrowListener implements Listener {
 		List<MetadataValue> meta = e.getEntity().getMetadata(metaKey);
 		
 		if (meta == null || meta.isEmpty()) {
-			System.out.println("null meta");
 			return;
 		}
 		
-
-		System.out.println("Fetching type for " + meta.get(0).asString());
 		BowType type = BowType.valueOf(meta.get(0).asString());
 		
 		if (type == null) {

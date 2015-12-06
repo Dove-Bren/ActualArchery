@@ -4,6 +4,7 @@ import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
 import org.bukkit.projectiles.ProjectileSource;
 
 public class FireBow extends CustomBow {
@@ -19,13 +20,15 @@ public class FireBow extends CustomBow {
 	
 	@Override
 	public void onFire(Location location, ProjectileSource source) {
-		; //nothing on fire
+		location.getWorld().playEffect(location, Effect.MOBSPAWNER_FLAMES, 0);
+		if (source instanceof Player) {
+			((Player) source).playEffect(location, Effect.BLAZE_SHOOT, null);
+		}
 	}
 
 	@Override
 	public void onHit(Location location) {
-		System.out.println("hit");
-		location.getWorld().playEffect(location, Effect.MOBSPAWNER_FLAMES, 0, 1);
+		location.getWorld().playEffect(location, Effect.MOBSPAWNER_FLAMES, 0, 20);
 	}
 
 	@Override
