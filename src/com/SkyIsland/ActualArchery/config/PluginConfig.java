@@ -12,7 +12,7 @@ import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import com.SkyIsland.ActualArchery.ActualArcheryPlugin;
-import com.SkyIsland.ActualArchery.arrows.ArrowType;
+import com.SkyIsland.ActualArchery.bows.BowType;
 
 public class PluginConfig {
 	
@@ -46,7 +46,7 @@ public class PluginConfig {
 		writer.println();
 		writer.println("# Is this arrow allowed? (Values: true | false)");
 		writer.println("enabled:");
-		for (ArrowType type : ArrowType.values()) {
+		for (BowType type : BowType.values()) {
 			writer.println(tab + type.name() + ": true");
 		}
 		
@@ -94,7 +94,7 @@ public class PluginConfig {
 		return config;
 	}
 	
-	private Map<ArrowType, Boolean> accessMap;
+	private Map<BowType, Boolean> accessMap;
 	
 	private MsgLevel msgLevel;
 	
@@ -103,7 +103,7 @@ public class PluginConfig {
 		return msgLevel;
 	}
 	
-	public boolean isEnabled(ArrowType type) {
+	public boolean isEnabled(BowType type) {
 		if (accessMap.containsKey(type)) {
 			return accessMap.get(type);
 		}
@@ -115,11 +115,11 @@ public class PluginConfig {
 	
 	private void load(YamlConfiguration config) {
 		
-		accessMap = new HashMap<ArrowType, Boolean>();
+		accessMap = new HashMap<BowType, Boolean>();
 		
 		if (config.contains("enabled")) {
 			ConfigurationSection accessSection = config.getConfigurationSection("enabled");
-			for (ArrowType type : ArrowType.values()) {
+			for (BowType type : BowType.values()) {
 				//for all arrow types, try to look up. If not there, put in map as false
 				accessMap.put(type, accessSection.getBoolean(type.toString(), false));
 			}

@@ -1,10 +1,10 @@
 package com.SkyIsland.ActualArchery;
 
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Projectile;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.ProjectileLaunchEvent;
+import org.bukkit.event.entity.EntityShootBowEvent;
+import org.bukkit.inventory.ItemStack;
 
 /**
  * Class dedicated to listening for arrow events and changing their actions to match the specified
@@ -18,14 +18,12 @@ public class ArrowListener implements Listener {
 	}
 	
 	@EventHandler
-	public void onArrowFire(ProjectileLaunchEvent e) {
+	public void onArrowFire(EntityShootBowEvent e) {
 		if (e.isCancelled()) {
 			return;
 		}
 		
-		Projectile proj = e.getEntity();
 		
-		if (proj.getM)
 	}
 	
 }

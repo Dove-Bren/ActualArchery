@@ -1,4 +1,4 @@
-package com.SkyIsland.ActualArchery.arrows;
+package com.SkyIsland.ActualArchery.bows;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,17 +14,17 @@ import org.bukkit.projectiles.ProjectileSource;
  */
 public abstract class CustomArrow {
 	
-	private static Map<ArrowType, CustomArrow> arrowMap = new HashMap<ArrowType, CustomArrow>();
+	private static Map<BowType, CustomArrow> arrowMap = new HashMap<BowType, CustomArrow>();
 	
 	/**
 	 * Attempts to register the provided arrow prototype to the given type.<br />
 	 * This method does not overwrite an existing arrow type if it's there. To do that, see
-	 * {@link #registerArrow(ArrowType, CustomArrow, boolean)}
+	 * {@link #registerArrow(BowType, CustomArrow, boolean)}
 	 * @param type
 	 * @param arrow
 	 * @return True if the arrow was successfully registered, and false otherwise (like if the arrowtype's taken)
 	 */
-	public static boolean registerArrow(ArrowType type, CustomArrow arrow) {
+	public static boolean registerArrow(BowType type, CustomArrow arrow) {
 		return registerArrow(type, arrow, false);
 	}
 	
@@ -35,7 +35,7 @@ public abstract class CustomArrow {
 	 * @param overwrite Whether or not to register the arrow
 	 * @return True if the arrow was successfully registered, false otherwise (like on !overwrite && collision)
 	 */
-	public static boolean registerArrow(ArrowType type, CustomArrow arrow, boolean overwrite) {
+	public static boolean registerArrow(BowType type, CustomArrow arrow, boolean overwrite) {
 		if (!arrowMap.containsKey(type) || overwrite) {
 			arrowMap.put(type, arrow);
 			return true;
@@ -44,7 +44,7 @@ public abstract class CustomArrow {
 		return false;
 	}
 	
-	public static CustomArrow getArrow(ArrowType type) {
+	public static CustomArrow getArrow(BowType type) {
 		return arrowMap.get(type);
 	}
 	
