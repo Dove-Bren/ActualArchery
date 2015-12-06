@@ -24,7 +24,8 @@ public class FireBow extends CustomBow {
 
 	@Override
 	public void onHit(Location location) {
-		location.getWorld().playEffect(location, Effect.BLAZE_SHOOT, 1, 4);
+		System.out.println("hit");
+		location.getWorld().playEffect(location, Effect.MOBSPAWNER_FLAMES, 0, 1);
 	}
 
 	@Override

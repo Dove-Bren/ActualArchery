@@ -29,16 +29,19 @@ public class ArrowListener implements Listener {
 	
 	@EventHandler
 	public void onArrowHit(ProjectileHitEvent e) {
-		if (!(e instanceof Arrow)) {
+		if (!(e.getEntity() instanceof Arrow)) {
 			return;
 		}
 		
 		List<MetadataValue> meta = e.getEntity().getMetadata(metaKey);
 		
 		if (meta == null || meta.isEmpty()) {
+			System.out.println("null meta");
 			return;
 		}
 		
+
+		System.out.println("Fetching type for " + meta.get(0).asString());
 		BowType type = BowType.valueOf(meta.get(0).asString());
 		
 		if (type == null) {
