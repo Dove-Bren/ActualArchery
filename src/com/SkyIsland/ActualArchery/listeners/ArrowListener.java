@@ -12,7 +12,7 @@ import org.bukkit.metadata.MetadataValue;
 
 import com.SkyIsland.ActualArchery.ActualArcheryPlugin;
 import com.SkyIsland.ActualArchery.bows.BowType;
-import com.SkyIsland.ActualArchery.bows.CustomArrow;
+import com.SkyIsland.ActualArchery.bows.CustomBow;
 
 /**
  * Class dedicated to listening for arrow events and changing their actions to match the specified
@@ -45,7 +45,7 @@ public class ArrowListener implements Listener {
 			return;
 		}
 		
-		CustomArrow.getArrow(type).onHit(e.getEntity().getLocation());
+		CustomBow.getArrow(type).onHit(e.getEntity().getLocation());
 	}
 	
 	@EventHandler
@@ -66,7 +66,7 @@ public class ArrowListener implements Listener {
 			return;
 		}
 		
-		CustomArrow.getArrow(type).onHitEntity(e.getEntity().getLocation(), e.getEntity());
+		CustomBow.getArrow(type).onHitEntity(e.getEntity().getLocation(), e.getEntity());
 	}
 	
 	
