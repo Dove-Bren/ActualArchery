@@ -61,7 +61,7 @@ public abstract class CustomBow {
 	 * Examples of possible use include some sort of area of effect thing regardless of if it hits an entity or not
 	 * @param location
 	 */
-	public abstract void onHit(Location location);
+	public abstract void onHit(ProjectileSource source, Location location);
 	
 	/**
 	 * Called when an arrow hits an entity.<br />
@@ -70,6 +70,6 @@ public abstract class CustomBow {
 	 * @param location
 	 * @param entity
 	 */
-	public abstract void onHitEntity(Location location, Entity entity);
+	public abstract void onHitEntity(ProjectileSource source, Location location, Entity entity);
 	
 }

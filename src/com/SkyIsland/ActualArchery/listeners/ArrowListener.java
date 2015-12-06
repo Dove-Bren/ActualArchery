@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Arrow;
+import org.bukkit.entity.Projectile;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -45,12 +46,12 @@ public class ArrowListener implements Listener {
 			return;
 		}
 		
-		CustomBow.getArrow(type).onHit(e.getEntity().getLocation());
+		CustomBow.getArrow(type).onHit(e.getEntity().getShooter(), e.getEntity().getLocation());
 	}
 	
 	@EventHandler
 	public void onArrowHitEntity(EntityDamageByEntityEvent e) {
-		if (e.isCancelled()) {
+		if (e.isCancelled() || (!(e.getDamager() instanceof Projectile))) {
 			return;
 		}
 		
@@ -66,7 +67,7 @@ public class ArrowListener implements Listener {
 			return;
 		}
 
-		CustomBow.getArrow(type).onHitEntity(e.getEntity().getLocation(), e.getEntity());
+		CustomBow.getArrow(type).onHitEntity(((Projectile) e.getDamager()).getShooter(), e.getEntity().getLocation(), e.getEntity());
 	}
 	
 	

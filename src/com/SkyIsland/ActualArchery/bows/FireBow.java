@@ -28,7 +28,7 @@ public class FireBow extends CustomBow {
 	}
 
 	@Override
-	public void onHit(Location location) {
+	public void onHit(ProjectileSource source, Location location) {
 		location.getWorld().playEffect(location, Effect.MOBSPAWNER_FLAMES, 0, 20);
 		if (location.getBlock().getType() == Material.AIR) {
 			location.getBlock().setType(Material.FIRE);
@@ -36,7 +36,7 @@ public class FireBow extends CustomBow {
 	}
 
 	@Override
-	public void onHitEntity(Location location, Entity entity) {
+	public void onHitEntity(ProjectileSource source, Location location, Entity entity) {
 		
 		if (!(entity instanceof LivingEntity)) {
 			return;

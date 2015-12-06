@@ -30,7 +30,7 @@ public class IceBow extends CustomBow {
 	}
 
 	@Override
-	public void onHit(Location location) {
+	public void onHit(ProjectileSource source, Location location) {
 		location.getWorld().playSound(location, Sound.GLASS, 1, (float) .7);
 		
 		if (location.getBlock().getType() != Material.WATER && location.getBlock().getType() != Material.STATIONARY_WATER) {
@@ -63,7 +63,7 @@ public class IceBow extends CustomBow {
 	}
 
 	@Override
-	public void onHitEntity(Location location, Entity entity) {
+	public void onHitEntity(ProjectileSource source, Location location, Entity entity) {
 		
 		if (!(entity instanceof LivingEntity)) {
 			return;

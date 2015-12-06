@@ -25,12 +25,12 @@ public class SlowBow extends CustomBow {
 	}
 
 	@Override
-	public void onHit(Location location) {
+	public void onHit(ProjectileSource source, Location location) {
 		location.getWorld().playSound(location, Sound.SLIME_WALK2, 1, 1);
 	}
 
 	@Override
-	public void onHitEntity(Location location, Entity entity) {
+	public void onHitEntity(ProjectileSource source, Location location, Entity entity) {
 		
 		if (!(entity instanceof LivingEntity)) {
 			return;
