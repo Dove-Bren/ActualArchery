@@ -15,9 +15,9 @@ import com.google.common.collect.Lists;
 
 public enum BowType {
 
-	FIRE(FireBow.class, Material.BLAZE_POWDER),
-	ICE(FireBow.class, Material.SNOW_BALL, Material.SNOW_BALL, Material.ICE),
-	SLOW(FireBow.class, Material.WATER_BUCKET, Material.SOUL_SAND),
+	FIRE(FireBow.class, Material.BLAZE_POWDER, Material.BLAZE_POWDER, Material.SULPHUR),
+	ICE(IceBow.class, Material.SNOW_BALL, Material.SNOW_BALL, Material.ICE),
+	SLOW(SlowBow.class, Material.WATER_BUCKET, Material.SOUL_SAND, Material.SLIME_BALL),
 	ENDER(FireBow.class, Material.ENDER_PEARL, Material.ENDER_PEARL, Material.DIAMOND);
 	
 	private Class<? extends CustomBow> bowClass;
