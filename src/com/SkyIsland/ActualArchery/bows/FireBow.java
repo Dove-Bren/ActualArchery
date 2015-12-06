@@ -8,14 +8,13 @@ import org.bukkit.projectiles.ProjectileSource;
 
 public class FireBow extends CustomBow {
 
-	private double baseDamage;
+	public static double extraDamage = 1.0;
 	
 	/**
 	 * Constructs a firebow prototype with the given extra damage
 	 * @param baseDamage
 	 */
-	public FireBow(double extraDamage) {
-		this.baseDamage = extraDamage;
+	public FireBow() {
 	}
 	
 	@Override
@@ -34,7 +33,7 @@ public class FireBow extends CustomBow {
 			return;
 		}
 		
-		((LivingEntity) entity).damage(baseDamage);
+		((LivingEntity) entity).damage(extraDamage);
 	}
 
 }
