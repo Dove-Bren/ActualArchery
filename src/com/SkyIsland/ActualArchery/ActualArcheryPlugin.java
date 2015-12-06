@@ -35,6 +35,9 @@ public class ActualArcheryPlugin extends JavaPlugin {
 			if (conf.isEnabled(type)) {
 				CustomBow.registerArrow(type, type.getBow());
 			}
+			if (conf.isCraftable(type)) {
+				type.registerRecipe();
+			}
 		}
 		
 		this.bowListener = new BowListener();

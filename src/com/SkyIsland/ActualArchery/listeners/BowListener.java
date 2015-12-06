@@ -3,6 +3,7 @@ package com.SkyIsland.ActualArchery.listeners;
 import java.util.List;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -44,7 +45,9 @@ public class BowListener implements Listener {
 		
 		//search through lore for a bow type
 		for (String line : lore) {
+			line = ChatColor.stripColor(line.trim());
 			if (line.startsWith(BowListener.bowPrefix)) {
+				System.out.println("type: [" + ChatColor.stripColor(line.trim()).replaceAll(ChatColor.RESET + "", "") + "]");
 				type = BowType.valueOf(line.substring((BowListener.bowPrefix).length()));
 				break;
 			}

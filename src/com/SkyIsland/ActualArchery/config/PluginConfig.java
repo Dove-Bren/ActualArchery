@@ -57,7 +57,7 @@ public class PluginConfig {
 		writer.println();
 		writer.println();
 		writer.println("# Is this arrow craftable? (Values: true | false)");
-		writer.println("enabled:");
+		writer.println("craftable:");
 		for (BowType type : BowType.values()) {
 			writer.println(tab + type.name() + ": true");
 		}
@@ -108,6 +108,8 @@ public class PluginConfig {
 	
 	private Map<BowType, Boolean> accessMap;
 	
+	private Map<BowType, Boolean> craftMap;
+	
 	private MsgLevel msgLevel;
 	
 	
@@ -123,11 +125,20 @@ public class PluginConfig {
 		return false;
 	}
 	
+	public boolean isCraftable(BowType type) {
+		if (accessMap.containsKey(type)) {
+			return accessMap.get(type);
+		}
+		
+		return false;
+	}
+	
 	
 	
 	private void load(YamlConfiguration config) {
 		
 		accessMap = new HashMap<BowType, Boolean>();
+		craftMap = new HashMap<BowType, Boolean>();
 		
 		if (config.contains("enabled")) {
 			ConfigurationSection accessSection = config.getConfigurationSection("enabled");
@@ -135,6 +146,20 @@ public class PluginConfig {
 				//for all arrow types, try to look up. If not there, put in map as false
 				accessMap.put(type, accessSection.getBoolean(type.toString(), false));
 			}
+		} else {
+			ActualArcheryPlugin.plugin.getLogger().warning("Missing section 'enabled' in configuration!\n"
+					+ "It's recommended you remove the config and let a new one be generated!");
+		}
+		
+		if (config.contains("craftable")) {
+			ConfigurationSection accessSection = config.getConfigurationSection("craftable");
+			for (BowType type : BowType.values()) {
+				//for all arrow types, try to look up. If not there, put in map as false
+				craftMap.put(type, accessSection.getBoolean(type.toString(), false));
+			}
+		} else {
+			ActualArcheryPlugin.plugin.getLogger().warning("Missing section 'craftable' in configuration!\n"
+					+ "It's recommended you remove the config and let a new one be generated!");
 		}
 		
 		if (config.contains("msglvl")) {
@@ -161,6 +186,8 @@ public class PluginConfig {
 			
 		} else {
 			msgLevel = MsgLevel.ALL;
+			ActualArcheryPlugin.plugin.getLogger().warning("Missing section 'msglvl' in configuration!\n"
+				+ "It's recommended you remove the config and let a new one be generated!");
 		}
 	}
 	

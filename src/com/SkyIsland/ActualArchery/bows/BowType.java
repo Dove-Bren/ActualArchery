@@ -31,7 +31,8 @@ public enum BowType {
 		ItemMeta meta = bow.getItemMeta();
 		
 		meta.setDisplayName("Enchanted Bow");
-		meta.setLore(Lists.newArrayList(ChatColor.DARK_PURPLE + BowListener.bowPrefix + name() + ChatColor.RESET));
+		meta.setLore(Lists.newArrayList(ChatColor.DARK_PURPLE + BowListener.bowPrefix + name()));
+		bow.setItemMeta(meta);		
 		
 		ShapelessRecipe rec = new ShapelessRecipe(bow);
 		rec.addIngredient(Material.BOW);
