@@ -50,11 +50,11 @@ public class ArrowListener implements Listener {
 	
 	@EventHandler
 	public void onArrowHitEntity(EntityDamageByEntityEvent e) {
-		if (e.isCancelled() || !(e.getDamager() instanceof Arrow)) {
+		if (e.isCancelled()) {
 			return;
 		}
 		
-		List<MetadataValue> meta = e.getEntity().getMetadata(metaKey);
+		List<MetadataValue> meta = e.getDamager().getMetadata(metaKey);
 		
 		if (meta == null || meta.isEmpty()) {
 			return;
@@ -65,7 +65,7 @@ public class ArrowListener implements Listener {
 		if (type == null) {
 			return;
 		}
-		
+
 		CustomBow.getArrow(type).onHitEntity(e.getEntity().getLocation(), e.getEntity());
 	}
 	

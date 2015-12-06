@@ -26,15 +26,9 @@ public enum BowType {
 	
 	private BowType(Class<? extends CustomBow> bowClass, Material ... materials) {
 		this.bowClass = bowClass;
+				
 		
-		ItemStack bow = new ItemStack(Material.BOW, 1);
-		ItemMeta meta = bow.getItemMeta();
-		
-		meta.setDisplayName("Enchanted Bow");
-		meta.setLore(Lists.newArrayList(ChatColor.DARK_PURPLE + BowListener.bowPrefix + name()));
-		bow.setItemMeta(meta);		
-		
-		ShapelessRecipe rec = new ShapelessRecipe(bow);
+		ShapelessRecipe rec = new ShapelessRecipe(getBowItem());
 		rec.addIngredient(Material.BOW);
 		for (Material mat : materials) {
 			rec.addIngredient(mat);
@@ -57,6 +51,17 @@ public enum BowType {
 	
 	public void registerRecipe() {
 		Bukkit.getServer().addRecipe(recipe);
+	}
+	
+	protected ItemStack getBowItem() {
+		ItemStack bow = new ItemStack(Material.BOW, 1);
+		ItemMeta meta = bow.getItemMeta();
+		
+		meta.setDisplayName("Enchanted Bow");
+		meta.setLore(Lists.newArrayList(ChatColor.DARK_PURPLE + BowListener.bowPrefix + name()));
+		bow.setItemMeta(meta);
+		
+		return bow;
 	}
 	
 }

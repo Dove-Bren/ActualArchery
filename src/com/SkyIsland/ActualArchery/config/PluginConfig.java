@@ -126,8 +126,8 @@ public class PluginConfig {
 	}
 	
 	public boolean isCraftable(BowType type) {
-		if (accessMap.containsKey(type)) {
-			return accessMap.get(type);
+		if (craftMap.containsKey(type)) {
+			return craftMap.get(type);
 		}
 		
 		return false;

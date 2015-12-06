@@ -2,6 +2,7 @@ package com.SkyIsland.ActualArchery.bows;
 
 import org.bukkit.Effect;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -29,15 +30,21 @@ public class FireBow extends CustomBow {
 	@Override
 	public void onHit(Location location) {
 		location.getWorld().playEffect(location, Effect.MOBSPAWNER_FLAMES, 0, 20);
+		if (location.getBlock().getType() == Material.AIR) {
+			location.getBlock().setType(Material.FIRE);
+		}
 	}
 
 	@Override
 	public void onHitEntity(Location location, Entity entity) {
+		
 		if (!(entity instanceof LivingEntity)) {
 			return;
 		}
 		
 		((LivingEntity) entity).damage(extraDamage);
+		
+		((LivingEntity) entity).setFireTicks(60);
 	}
 
 }

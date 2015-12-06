@@ -47,7 +47,6 @@ public class BowListener implements Listener {
 		for (String line : lore) {
 			line = ChatColor.stripColor(line.trim());
 			if (line.startsWith(BowListener.bowPrefix)) {
-				System.out.println("type: [" + ChatColor.stripColor(line.trim()).replaceAll(ChatColor.RESET + "", "") + "]");
 				type = BowType.valueOf(line.substring((BowListener.bowPrefix).length()));
 				break;
 			}
