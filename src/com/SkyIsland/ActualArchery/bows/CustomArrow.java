@@ -53,7 +53,7 @@ public abstract class CustomArrow {
 	 * @param location The location the projectile is fired from
 	 * @param source the source of the projectile
 	 */
-	protected abstract void onFire(Location location, ProjectileSource source);
+	public abstract void onFire(Location location, ProjectileSource source);
 	
 	/**
 	 * Called whenever an arrow hits something. This can be <b>either a block or an entity</b>, and is called
@@ -61,7 +61,7 @@ public abstract class CustomArrow {
 	 * Examples of possible use include some sort of area of effect thing regardless of if it hits an entity or not
 	 * @param location
 	 */
-	protected abstract void onHit(Location location);
+	public abstract void onHit(Location location);
 	
 	/**
 	 * Called when an arrow hits an entity.<br />
@@ -70,6 +70,6 @@ public abstract class CustomArrow {
 	 * @param location
 	 * @param entity
 	 */
-	protected abstract void onHitEntity(Location location, Entity entity);
+	public abstract void onHitEntity(Location location, Entity entity);
 	
 }
